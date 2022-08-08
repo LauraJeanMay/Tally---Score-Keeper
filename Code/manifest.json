@@ -1,7 +1,7 @@
 {
 "name": "Tally",
 "short_name": "Tally",
-"start_url": "The URL that should be loaded when your application is opened",
+"start_url": "https://laurajeanmay.github.io/Tally---Score-Keeper/",
 "display": "standalone",
 "description": "Tally: A Scorekeeping app to assist with tabletop games",
 "lang": "English",
