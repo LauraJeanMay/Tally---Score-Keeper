@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="master.css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+        <!--dsylexic font link--> <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/opendyslexic" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/3842b8703d.js" crossorigin="anonymous"></script>
+        <script src="masterjavascript.js"></script>
+        <title>Tally</title>
+    </head>
+   <!-- Top Navigation Menu -->
+<div class="topnav">
+  <a href="./tally.html" class="mainLogo"><img src="images/Reduced Size Logo.svg"></a>
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href="./startgamesetup.html">Start Game</a>
+    <a href="./savedgames.html">Saved Games</a>
+    <a href="./leaderboard.html">Leaderboard</a>
+    <a href="./settings.html">Settings</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="navBar()">
+    <i class="fa fa-bars" id="hamburger"></i>
+  </a>
+</section>
+<br>
+<body>
+  <br>
+  <div class="game-container">
+    <h1>Score Card</h1>
+      <div class="row">
+          <div class="col-md-12">
+              <p>
+                  <label id="playerNum">Enter number of players</label>
+                  <br>
+                  <input type="number" class="form-control" id="number-input" value="0" min="0" required>
+                  <br>
+                  <button id="makeTable">Go</button>
+                  <table id="scoreTable">
+                  </table>
+                  <button id="addRound">Add Round</button>
+                  <br>
+                  <div id="scores">
+                   <button id="calculateScores">Calculate Scores</button>
+                  </div>
+                  <br>
+                  <button id="saveGame">Save</button>
+              </p>
+          </div>
+      </div>
+  </div>
+</body>
+
+<script>
+    /*Game page functionaility*/
+
+    let numberofRounds = 0;
+  
+  let scoreData;
+  let results = {};
+
+  let nextGameID = localStorage.getItem("nextId");
+
+   /// if <= 0 then it means this has never been set
+   if (nextGameID <= 0) {
+        nextGameID = 0;
+      }
+      else {
+        nextGameID = parseInt(nextGameID);
+      }
+      nextGameID += 1;
+      localStorage.setItem("nextId", nextGameID);
+
+  nextGameID = localStorage.getItem("nextId");
+
+   // take number-input and make columns of it
+  function createColumns(){
+    const numberInput = document.getElementById('number-input');
+  const numberInputValue = numberInput.value;
+  const numberInputValueInt = parseInt(numberInputValue);
+  const scoreTable = document.getElementById('scoreTable');
+  topRow = document.createElement('tr');
+  topRow.setAttribute("id", "topRow");
+  scoreTable.appendChild(topRow);
+  const players = document.createElement('td');
+
+
+  players.innerHTML = "Players";
+  topRow.appendChild(players);
+  for(let i = 0; i < numberInputValueInt; i++){
+    const td = document.createElement('td');
+    td.innerHTML = '<textarea type="text" class="form-control" id="player-input' + i + '">'
+    topRow.appendChild(td);
+  }
+  document.getElementById('number-input').style.display = "none";
+  document.getElementById('makeTable').style.display = "none";
+  }
+
+  function addRound(){
+    const currentRound = +numberofRounds + 1;
+    numberofRounds = currentRound;
+    const roundNumber = "round_" + currentRound;
+    const numberInput = document.getElementById('number-input');
+  const numberInputValue = numberInput.value;
+  const numberInputValueInt = parseInt(numberInputValue);
+  const scoreTable = document.getElementById('scoreTable');
+  topRow = document.createElement('tr');
+  topRow.setAttribute("id", roundNumber);
+  scoreTable.appendChild(topRow);
+  const players = document.createElement('td');
+  players.innerHTML = currentRound;
+  topRow.appendChild(players);
+  for(let i = 0; i < numberInputValueInt; i++){
+    const td = document.createElement('td');
+    td.setAttribute("id", "round_"+currentRound+"_player_" + i);
+    td.innerHTML = `<textarea type="number" class="form-control" id="score-input" value="0">`;
+    topRow.appendChild(td);
+  }
+  }
+  
+  function calculateScores(){
+            const numberInput = document.getElementById('number-input');
+      const numberInputValue = numberInput.value;
+
+      players = [];
+      finalscores = [];
+      results = {};
+
+    for(let i = 0; i < numberInputValue; i++){
+          const p = document.createElement('p');
+                let playerScore = 0;
+          for(let j = 1; j <= numberofRounds; j++){
+            const elementToGet = "round_"+ j +"_player_" + i;
+            //start
+            playerScore = +playerScore + +document.querySelector("td#" + elementToGet + " textarea").value; 
+            
+            p.innerHTML = document.getElementById('player-input' + i).value + ": " + playerScore;
+            let scoreDiv = document.getElementById('scores');
+            scoreDiv.appendChild(p);
+  
+            p.setAttribute("id", "finalScores");
+            finalscores[i] = playerScore;
+          players[i] = document.getElementById('player-input' + i).value;
+        };
+
+        results.players = players;
+        results.finalscores = finalscores;
+        //scoreData.results = results;
+      }
+      }
+  
+  function hideCalculateScores() {
+    var div = document.getElementById('calculateScores');
+    div.style.display = 'none';
+  }
+  function hideAddRound() {
+    var hide = document.getElementById('addRound');
+    hide.style.display = 'none';
+  }
+  
+  function hideLabel() {
+    var label = document.getElementById('playerNum');
+    label.style.display = 'none';
+  }
+  
+  //SAVING GAMES
+  function saveScores() {
+      let data = localStorage.getItem("scoreTable");
+
+      if (data == null) {
+        data = { "games": [] }
+        
+      }
+      else {
+        data = JSON.parse(data);
+      }
+       data.games.length = nextGameID;
+
+      data.games[nextGameID-1] = results;
+
+      localStorage.setItem("scoreTable", JSON.stringify(data));
+
+      display(data);
+    }
+
+  // make event listener makeTable
+  document.getElementById("makeTable").addEventListener("click", function(){createColumns();});
+  document.getElementById("addRound").addEventListener("click", function(){addRound();});
+  document.getElementById("calculateScores").addEventListener('click', function(){calculateScores();});
+  document.getElementById("saveGame").addEventListener("click", function(){saveScores();});
+  document.getElementById('calculateScores').addEventListener('click', function(){hideCalculateScores();});
+  document.getElementById("calculateScores").addEventListener('click', function(){hideAddRound();});
+  document.getElementById("makeTable").addEventListener('click', function(){hideLabel();});
+</script>

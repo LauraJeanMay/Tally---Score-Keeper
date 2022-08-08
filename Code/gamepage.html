@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="master.css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+        <!--dsylexic font link--> <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/opendyslexic" type="text/css"/>
+        <script src="https://kit.fontawesome.com/3842b8703d.js" crossorigin="anonymous"></script>
+        <script src="masterjavascript.js"></script>
+        <title>Tally</title>
+    </head>
+    
+    <!-- Top Navigation Menu -->
+<div class="topnav">
+  <a href="./tally.html" class="mainLogo"><img src="images/Reduced Size Logo.svg"></a>
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href="./startgamesetup.html">Start Game</a>
+    <a href="./savedgames.html">Saved Games</a>
+    <a href="./leaderboard.html">Leaderboard</a>
+    <a href="./settings.html">Settings</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="navBar()">
+    <i class="fa fa-bars" id="hamburger"></i>
+  </a>
+</div>
+<br>
+
+  <div id="mainstopwatch">
+  <div class="mainTime">
+  <span id="mainminute">00</span>
+  <span id="mainsecond">00</span>
+  <span id="milliseconds">00</span>
+  </div>
+  <br>
+  <button id="start" onclick="start();">Start</button>
+  <button id="stop" onclick="stop();">Stop</button>
+  <button id="reset" onclick="reset();">Reset</button>
+

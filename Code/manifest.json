@@ -1,0 +1,48 @@
+{
+"name": "Tally",
+"short_name": "Tally",
+"start_url": "The URL that should be loaded when your application is opened",
+"display": "standalone",
+"description": "Tally: A Scorekeeping app to assist with tabletop games",
+"lang": "English",
+"dir": "auto",
+"theme_color": "#000000",
+"background_color": "#c648f2",
+"orientation": "portrait",
+"icons": [
+    {
+        "src": "LOGO WITH BACKGROUND(1).jpg ",
+        "sizes": "250x250",
+        "type": "image/svg",
+        "purpose": "maskable any"
+    },
+    {
+        "src": "Reduced Size Logo.jpg",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable any"
+    }
+],
+"screenshots": [
+    {
+        "src": "Scorecard.jpg",
+        "sizes": "2880x1800",
+        "type": "image/png",
+        "description": "A screenshot of the score card"
+    }
+],
+"related_applications": [
+    {
+        "platform":"windows",
+        "url": " The URL to your app in that app store"
+    }
+],
+"prefer_related_applications": "false",
+"shortcuts": [
+    {
+        "name":"Tally",
+        "url":"The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut",
+        "description":"A description of the functionality of this shortcut"
+    }
+]
+}
