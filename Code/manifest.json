@@ -7,17 +7,17 @@
 "lang": "English",
 "dir": "auto",
 "theme_color": "#000000",
-"background_color": "#c648f2",
+"background_color": "#ffd166",
 "orientation": "portrait",
 "icons": [
     {
-        "src": "LOGO WITH BACKGROUND(1).jpg ",
+        "src": "manifestLogo.png",
         "sizes": "250x250",
         "type": "image/svg",
         "purpose": "maskable any"
     },
     {
-        "src": "Reduced Size Logo.jpg",
+        "src": "appleLogo.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable any"
