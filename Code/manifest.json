@@ -1,7 +1,7 @@
 {
 "name": "Tally",
 "short_name": "Tally",
-"start_url": "https://laurajeanmay.github.io/Tally---Score-Keeper/",
+"start_url": "https://laurajeanmay.github.io/Tally---Score-Keeper/Code/tally.html",
 "display": "standalone",
 "description": "Tally: A Scorekeeping app to assist with tabletop games",
 "lang": "English",
@@ -13,7 +13,7 @@
     {
         "src": "manifestLogo.png",
         "sizes": "250x250",
-        "type": "image/svg",
+        "type": "image/png",
         "purpose": "maskable any"
     },
     {
@@ -27,7 +27,7 @@
     {
         "src": "Scorecard.jpg",
         "sizes": "2880x1800",
-        "type": "image/png",
+        "type": "image/jpg",
         "description": "A screenshot of the score card"
     }
 ],
@@ -41,7 +41,7 @@
 "shortcuts": [
     {
         "name":"Tally",
-        "url":"https://laurajeanmay.github.io/Tally---Score-Keeper/",
+        "url":"https://laurajeanmay.github.io/Tally---Score-Keeper/Code/tally.html",
         "description":"A description of the functionality of this shortcut"
     }
 ]
