@@ -229,6 +229,10 @@ th, td {
 #finalScores {
   text-align: center;
   justify-content: center;
+  display: inline-block;
+  letter-spacing: 5px;
+  text-indent: 115px;
+  font-size: 30px;
 }
 /*Score Card Styling Ends*/
 
@@ -252,7 +256,7 @@ th, td {
   font-size: 15px;
 }
 
-#comingsoon {
+#gamesTitle {
   margin: 15px 40px;
   align-items: center;
   justify-content: center;

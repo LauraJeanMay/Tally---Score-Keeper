@@ -51,7 +51,7 @@
                   <div id="scores">
                    <button aria-label="Calculate Scores" id="calculateScores">Calculate Scores</button>
                   </div>
-                  <br>
+                  <hr id="scoreLines" style="display:none;">
                   <button aria-label="Save Game" id="saveGame">Save</button>
               </p>
           </div>
@@ -171,6 +171,10 @@
     label.style.display = 'none';
   }
   
+  function hideHr() {
+    var label = document.getElementById('scoreLines');
+    label.style.display = 'block';
+  }
   //SAVING GAMES
   function saveScores() {
       let data = localStorage.getItem("scoreTable");
@@ -188,7 +192,8 @@
 
       localStorage.setItem("scoreTable", JSON.stringify(data));
 
-      //display(data); error in this line.
+      display(data); 
+      //error in line above.
     }
 
   // make event listener makeTable
@@ -199,4 +204,5 @@
   document.getElementById('calculateScores').addEventListener('click', function(){hideCalculateScores();});
   document.getElementById("calculateScores").addEventListener('click', function(){hideAddRound();});
   document.getElementById("makeTable").addEventListener('click', function(){hideLabel();});
+  document.getElementById("calculateScores").addEventListener('click', function(){hideHr();});
 </script>
